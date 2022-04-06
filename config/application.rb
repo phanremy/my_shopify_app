@@ -18,5 +18,12 @@ module MyShopifyApp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    frame_ancestors = "'self' https://*.frontapp.com https://*.frontapplication.com "\
+                      "https://admin.shopify.com"
+
+    config.action_dispatch.default_headers = {
+      'Content-Security-Policy' => "frame-ancestors #{frame_ancestors}"
+    }
   end
 end
